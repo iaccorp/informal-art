@@ -131,8 +131,7 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/admin/login', (req, res) => {
-  if (req.body.password === process.env.if (req.body.password === (process.env.ADMIN_PASSWORD || 'changeme123')) {ADMIN_PASSWORD) {
-    req.session.isAdmin = true;
+if (req.body.password === 'changeme123'){    req.session.isAdmin = true;
     res.redirect('/admin/dashboard');
   } else {
     res.render('admin-login', { error: 'Invalid password' });

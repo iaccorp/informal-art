@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results — Informal Art Consultants</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="/" class="site-title">Informal Art Consultants</a>
+      <nav class="site-nav">
+        <a href="/disclaimer">Disclaimer</a>
+        <a href="/testimonials">Testimonials</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <h1><%= submission.title %></h1>
+
+    <img src="<%= submission.photo_path %>" alt="<%= submission.title %>" class="artwork-image">
+
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="label">Artist</div>
+        <div class="value"><%= submission.artist_name %></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Date</div>
+        <div class="value"><%= submission.date %></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Medium</div>
+        <div class="value"><%= submission.medium %></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Dimensions</div>
+        <div class="value"><%= submission.dimensions %></div>
+      </div>
+      <% if (submission.edition_size) { %>
+        <div class="detail-item">
+          <div class="label">Edition Size</div>
+          <div class="value"><%= submission.edition_size %></div>
+        </div>
+      <% } %>
+    </div>
+
+    <% if (submission.appraisal) { %>
+      <div class="estimate-display">
+        <div class="label">Estimated Auction Result</div>
+        <div class="range"><%= submission.estimate_low %> &ndash; <%= submission.estimate_high %></div>
+      </div>
+
+      <div class="appraisal-section">
+        <h2>Notes</h2>
+        <p><%= submission.appraisal %></p>
+      </div>
+    <% } else { %>
+      <div class="pending-notice">
+        Your submission is in the queue and has not yet been reviewed. Please check back later.
+      </div>
+    <% } %>
+
+    <div class="page-nav">
+      <a href="/check">Check Another</a>
+      <a href="/">Submit an Artwork</a>
+    </div>
+  </div>
+</body>
+</html>

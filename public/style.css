@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  background: #fff;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout — Buchholz-style stacked header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  padding: 30px 30px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.header-right a {
+  color: #666;
+}
+
+.header-right a:hover {
+  color: #000;
+}
+
+.site-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-title:hover {
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.site-nav a {
+  color: #888;
+  font-weight: 300;
+}
+
+.site-nav a:hover {
+  color: #000;
+}
+
+.page-content {
+  padding: 100px 30px 80px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Forms — clean, Buchholz-minimal */
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 6px 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 14px;
+  color: #000;
+  background: transparent;
+  outline: none;
+  transition: border-color 200ms;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-bottom-color: #000;
+}
+
+input[type="file"] {
+  font-family: inherit;
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 56px;
+}
+
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23888' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  padding-right: 20px;
+}
+
+::placeholder {
+  color: #bbb;
+  font-style: italic;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 14px;
+}
+
+button, .btn {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 8px 0;
+  background: none;
+  color: #000;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: opacity 200ms;
+}
+
+button:hover, .btn:hover {
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+/* Date field with n.d. toggle */
+.date-field {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.date-field input {
+  flex: 1;
+}
+
+.nd-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  color: #888;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.nd-btn:hover {
+  border-color: #000;
+  color: #000;
+  opacity: 1;
+}
+
+.nd-btn.nd-active {
+  border-color: #000;
+  color: #000;
+}
+
+/* Error */
+.error {
+  color: #c00;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+
+/* Landing CTA */
+.landing-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.landing-cta a {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  border: 1px solid #000;
+  padding: 24px 40px;
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.landing-cta a:hover {
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+/* Code display */
+.code-display {
+  margin: 40px 0;
+  padding: 24px 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.code-display .label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.code-display .code {
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: #000;
+}
+
+.warning-text {
+  color: #c00;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+/* Nav links */
+.page-nav {
+  margin-top: 50px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+}
+
+/* Artwork detail */
+.artwork-image {
+  max-width: 100%;
+  max-height: 500px;
+  display: block;
+  margin: 0 0 24px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  margin: 16px 0 24px;
+}
+
+.detail-item {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+
+.detail-item .value {
+  font-size: 14px;
+  color: #000;
+  margin-top: 1px;
+}
+
+/* Result sections */
+.appraisal-section {
+  margin: 30px 0;
+  padding: 24px 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.appraisal-section h2 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.appraisal-section p {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.estimate-display {
+  margin: 24px 0;
+  padding: 24px 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.estimate-display .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.estimate-display .range {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.01em;
+}
+
+.pending-notice {
+  margin: 40px 0;
+  padding: 24px 0;
+  border-top: 1px solid #e5e5e5;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #888;
+}
+
+/* Admin login */
+.login-form {
+  max-width: 280px;
+}
+
+/* Admin dashboard */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.admin-header h1 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.admin-stats {
+  font-size: 12px;
+  color: #888;
+}
+
+.search-bar {
+  margin: 16px 0 24px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.search-bar input {
+  flex: 1;
+  max-width: 260px;
+  margin-top: 0;
+}
+
+.search-bar button {
+  margin-top: 0;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.search-bar .clear-link {
+  font-size: 12px;
+  color: #888;
+  padding-bottom: 7px;
+}
+
+/* Ticket list — Buchholz archival density */
+.ticket-list {
+  border-top: 1px solid #e5e5e5;
+}
+
+.ticket {
+  display: grid;
+  grid-template-columns: 50px 1fr 160px 80px;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  text-decoration: none;
+  color: #000;
+  transition: background 100ms;
+}
+
+.ticket:hover {
+  background: #fafafa;
+  text-decoration: none;
+}
+
+.ticket-thumb {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+}
+
+.ticket-info {
+  min-width: 0;
+}
+
+.ticket-title {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket-artist {
+  font-size: 12px;
+  color: #888;
+  margin-top: 1px;
+}
+
+.ticket-date {
+  font-size: 12px;
+  color: #aaa;
+  text-align: right;
+}
+
+.ticket-status {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+.status-pending {
+  color: #bbb;
+}
+
+.status-completed {
+  color: #000;
+}
+
+.empty-state {
+  padding: 40px 0;
+  color: #aaa;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+}
+
+/* Admin detail page */
+.back-link {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.submission-detail {
+  margin-top: 16px;
+}
+
+.submission-detail img {
+  max-width: 100%;
+  max-height: 400px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.submission-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  margin-bottom: 24px;
+}
+
+.meta-item {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+}
+
+.meta-item span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.appraisal-form {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.appraisal-form h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.estimate-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: end;
+}
+
+.estimate-row .separator {
+  padding-bottom: 8px;
+  color: #bbb;
+}
+
+.existing-badge {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #000;
+  padding: 3px 0;
+  border-bottom: 1px solid #000;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Prose — Buchholz text-first */
+.prose p {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.prose blockquote {
+  margin: 24px 0;
+  padding-left: 16px;
+  border-left: 1px solid #ddd;
+}
+
+.prose blockquote p {
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.prose cite {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  color: #888;
+}

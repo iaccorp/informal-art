@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Informal Art Consultants</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="/" class="site-title">Informal Art Consultants</a>
+      <nav class="site-nav">
+        <a href="/admin/dashboard">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <div class="admin-header">
+      <h1>Submissions</h1>
+      <div class="admin-stats">
+        <%= submissions.filter(s => s.appraisal).length %> completed,
+        <%= submissions.filter(s => !s.appraisal).length %> pending
+      </div>
+    </div>
+
+    <form class="search-bar" action="/admin/dashboard" method="GET">
+      <input type="text" name="search" placeholder="Search by artist name" value="<%= search %>">
+      <button type="submit">Search</button>
+      <% if (search) { %>
+        <a href="/admin/dashboard" class="clear-link">Clear</a>
+      <% } %>
+    </form>
+
+    <% if (submissions.length === 0) { %>
+      <div class="empty-state">
+        <% if (search) { %>
+          No submissions found for "<%= search %>"
+        <% } else { %>
+          No submissions yet.
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="ticket-list">
+        <% submissions.forEach(function(sub) { %>
+          <a href="/admin/submission/<%= sub.id %>" class="ticket">
+            <img src="<%= sub.photo_path %>" alt="<%= sub.title %>" class="ticket-thumb">
+            <div class="ticket-info">
+              <div class="ticket-title"><%= sub.title %></div>
+              <div class="ticket-artist"><%= sub.artist_name %></div>
+            </div>
+            <div class="ticket-date"><%= sub.created_at %></div>
+            <div class="ticket-status <%= sub.appraisal ? 'status-completed' : 'status-pending' %>">
+              <%= sub.appraisal ? 'Completed' : 'Pending' %>
+            </div>
+          </a>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

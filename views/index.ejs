@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informal Art Consultants</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="/" class="site-title">Informal Art Consultants</a>
+      <nav class="site-nav">
+        <a href="/disclaimer">Disclaimer</a>
+        <a href="/testimonials">Testimonials</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <div class="landing-cta" id="landing-nav">
+      <a href="#" id="show-form">Submit an Artwork for an Informal Consultation</a>
+      <a href="/check">Check Status of an Informal Consultation</a>
+    </div>
+
+    <div id="submission-form" style="display: none;">
+      <h1>Submit an Artwork</h1>
+
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error"><%= error %></div>
+      <% } %>
+
+      <form action="/submit" method="POST" enctype="multipart/form-data">
+        <label for="photo">Artwork Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/jpeg,image/png" required>
+
+        <label for="artist_name">Artist Name</label>
+        <input type="text" id="artist_name" name="artist_name" required>
+
+        <label for="title">Title of Work</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="date">Date of Work</label>
+        <div class="date-field">
+          <input type="text" id="date" name="date" placeholder="1985, c. 1920s" required>
+          <button type="button" class="nd-btn" id="nd-btn">n.d.</button>
+        </div>
+
+        <label for="medium">Medium</label>
+        <input type="text" id="medium" name="medium" placeholder="Oil on canvas, Bronze sculpture" required>
+
+        <label for="dimensions">Dimensions</label>
+        <input type="text" id="dimensions" name="dimensions" placeholder='24" x 36"' required>
+
+        <label for="edition_size">Edition Size</label>
+        <input type="text" id="edition_size" name="edition_size" placeholder="If applicable">
+
+        <label for="provenance">Provenance</label>
+        <textarea id="provenance" name="provenance" rows="3" placeholder="History of ownership"></textarea>
+
+        <label for="exhibition_history">Exhibition History</label>
+        <textarea id="exhibition_history" name="exhibition_history" rows="3" placeholder="Where has this work been shown?"></textarea>
+
+        <label for="purchase_price">Purchase Price</label>
+        <input type="text" id="purchase_price" name="purchase_price" placeholder="$5,000">
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('show-form').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('landing-nav').style.display = 'none';
+      document.getElementById('submission-form').style.display = 'block';
+    });
+
+    document.getElementById('nd-btn').addEventListener('click', function() {
+      var dateInput = document.getElementById('date');
+      var btn = this;
+      if (dateInput.value === 'n.d.') {
+        dateInput.value = '';
+        dateInput.readOnly = false;
+        btn.classList.remove('nd-active');
+      } else {
+        dateInput.value = 'n.d.';
+        dateInput.readOnly = true;
+        btn.classList.add('nd-active');
+      }
+    });
+  </script>
+</body>
+</html>

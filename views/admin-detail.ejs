@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= submission.title %> — Admin — Informal Art Consultants</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="/" class="site-title">Informal Art Consultants</a>
+      <nav class="site-nav">
+        <a href="/admin/dashboard">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <a href="/admin/dashboard" class="back-link">&larr; Back to submissions</a>
+
+    <div class="submission-detail">
+      <h1><%= submission.title %></h1>
+
+      <img src="<%= submission.photo_path %>" alt="<%= submission.title %>">
+
+      <div class="submission-meta">
+        <div class="meta-item"><span>Artist</span> <%= submission.artist_name %></div>
+        <div class="meta-item"><span>Date</span> <%= submission.date %></div>
+        <div class="meta-item"><span>Medium</span> <%= submission.medium %></div>
+        <div class="meta-item"><span>Dimensions</span> <%= submission.dimensions %></div>
+        <% if (submission.edition_size) { %>
+          <div class="meta-item"><span>Edition Size</span> <%= submission.edition_size %></div>
+        <% } %>
+        <div class="meta-item"><span>Purchase Price</span> <%= submission.purchase_price %></div>
+        <div class="meta-item"><span>Provenance</span> <%= submission.provenance %></div>
+        <div class="meta-item"><span>Exhibition History</span> <%= submission.exhibition_history %></div>
+        <div class="meta-item"><span>Secret Code</span> <%= submission.secret_code %></div>
+        <div class="meta-item"><span>Submitted</span> <%= submission.created_at %></div>
+      </div>
+
+      <% if (submission.appraisal) { %>
+        <div class="existing-badge">Appraised</div>
+      <% } %>
+
+      <div class="appraisal-form">
+        <h2><%= submission.appraisal ? 'Update' : 'Write' %> Appraisal</h2>
+
+        <form action="/admin/appraise/<%= submission.id %>" method="POST">
+          <label for="estimate_low">Expected Selling Price at Auction</label>
+          <div class="estimate-row">
+            <input type="text" name="estimate_low" id="estimate_low" placeholder="$3,000" value="<%= submission.estimate_low || '' %>" required>
+            <span class="separator">&ndash;</span>
+            <input type="text" name="estimate_high" id="estimate_high" placeholder="$5,000" value="<%= submission.estimate_high || '' %>" required>
+          </div>
+
+          <label for="appraisal">Appraisal Notes</label>
+          <textarea name="appraisal" id="appraisal" rows="6" required><%= submission.appraisal || '' %></textarea>
+
+          <button type="submit"><%= submission.appraisal ? 'Update' : 'Submit' %> Appraisal</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

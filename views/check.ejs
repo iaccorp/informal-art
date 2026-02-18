@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Status — Informal Art Consultants</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="/" class="site-title">Informal Art Consultants</a>
+      <nav class="site-nav">
+        <a href="/disclaimer">Disclaimer</a>
+        <a href="/testimonials">Testimonials</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <h1>Check Your Results</h1>
+    <p>Enter the secret code you received at submission.</p>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form action="/check" method="GET" onsubmit="this.action = '/check/' + this.code.value; return true;">
+      <label for="code">Secret Code</label>
+      <input type="text" id="code" name="code" placeholder="Enter your 16-character code" required>
+      <button type="submit">Check Status</button>
+    </form>
+
+    <div class="page-nav">
+      <a href="/">Submit an Artwork</a>
+    </div>
+  </div>
+</body>
+</html>

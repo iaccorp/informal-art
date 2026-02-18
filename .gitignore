@@ -1,0 +1,6 @@
+node_modules/
+uploads/
+.env
+art-appraisal.db
+art-appraisal.db-wal
+art-appraisal.db-shm
